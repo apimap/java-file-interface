@@ -28,11 +28,17 @@ ___
 This is a complete software solution consisting of a collection of freestanding components. Use only the components you
 find useful, create the rest to custom fit your organization.
 
+**Core**
 - A **Developer Portal** with wizards and implementation information
 - A **Discovery Portal** to display APIs and filter search results
 - An **API** to accommodate all the information
-- A **Jenkins plugin** to automate information parsing and upload
+- An **Orchestra API** to manage accounts and resource access
 - A **CLI** to enable manual information uploads
+
+**Plugins**
+- A **GitHub Action** to automate information parsing and upload
+- A **Jenkins plugin** to automate information parsing and upload
+- An **IntelliJ plugin** to make it easier to write metadata and taxonomy files
 
 ## Build and Run
 ___

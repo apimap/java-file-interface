@@ -1,20 +1,17 @@
 /*
-Licensed to the Apache Software Foundation (ASF) under one
-or more contributor license agreements.  See the NOTICE file
-distributed with this work for additional information
-regarding copyright ownership.  The ASF licenses this file
-to you under the Apache License, Version 2.0 (the
-"License"); you may not use this file except in compliance
-with the License.  You may obtain a copy of the License at
+Copyright 2021-2023 TELENOR NORGE AS
 
-  http://www.apache.org/licenses/LICENSE-2.0
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-Unless required by applicable law or agreed to in writing,
-software distributed under the License is distributed on an
-"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, either express or implied.  See the License for the
-specific language governing permissions and limitations
-under the License.
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
  */
 
 package io.apimap.file;
@@ -27,12 +24,13 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 public class ReadMetadataFileTest {
     @Test()
     public void readMetadataWithoutContent_didFailOnMissingVersion() throws UnsupportedVersionException, MissingRequiredFieldException, IOException {
         String initialString = "{}";
-        InputStream input = new ByteArrayInputStream(initialString.getBytes());
+        InputStream input = new ByteArrayInputStream(initialString.getBytes(StandardCharsets.UTF_8));
 
         Assertions.assertThrows(MissingRequiredFieldException.class, () -> {
             FileFactory.metadataFromInputStream(input);
@@ -42,7 +40,7 @@ public class ReadMetadataFileTest {
     @Test()
     public void readMetadataWithoutContent_didFailOnMissingData() throws UnsupportedVersionException, MissingRequiredFieldException, IOException {
         String initialString = "{\"api catalog version\":\"1\"}";
-        InputStream input = new ByteArrayInputStream(initialString.getBytes());
+        InputStream input = new ByteArrayInputStream(initialString.getBytes(StandardCharsets.UTF_8));
 
         Assertions.assertThrows(MissingRequiredFieldException.class, () -> {
             FileFactory.metadataFromInputStream(input);
@@ -52,7 +50,7 @@ public class ReadMetadataFileTest {
     @Test()
     public void readMetadataWithoutContent_didFailOnWrongVersion() throws UnsupportedVersionException, MissingRequiredFieldException, IOException {
         String initialString = "{\"data\": {}, \"api catalog version\":\"2\"}";
-        InputStream input = new ByteArrayInputStream(initialString.getBytes());
+        InputStream input = new ByteArrayInputStream(initialString.getBytes(StandardCharsets.UTF_8));
 
         Assertions.assertThrows(UnsupportedVersionException.class, () -> {
             FileFactory.metadataFromInputStream(input);
@@ -62,7 +60,7 @@ public class ReadMetadataFileTest {
     @Test()
     public void readMetadataWithoutContent_didFailOnEmptyData() throws UnsupportedVersionException, MissingRequiredFieldException, IOException {
         String initialString = "{\"data\": {}, \"api catalog version\":\"1\"}";
-        InputStream input = new ByteArrayInputStream(initialString.getBytes());
+        InputStream input = new ByteArrayInputStream(initialString.getBytes(StandardCharsets.UTF_8));
 
         Assertions.assertThrows(MissingRequiredFieldException.class, () -> {
             FileFactory.metadataFromInputStream(input);

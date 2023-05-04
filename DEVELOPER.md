@@ -16,15 +16,15 @@ This is the definition of our file interfaces. The files are simple text files t
 JSON-definitions:
 
 ### Metadata
-| Component | Description |
-|---|---|
-| MetadataFile | JSON fields required on the root level |
+| Component           | Description                                        |
+|---------------------|----------------------------------------------------|
+| MetadataFile        | JSON fields required on the root level             |
 | MetadataDataWrapper | JSON fields that contains the user defined content |
 
 ### Taxonomy
-| Component | Description |
-|---|---|
-| TaxonomyFile | JSON fields required on the root level |
+| Component           | Description                                        |
+|---------------------|----------------------------------------------------|
+| TaxonomyFile        | JSON fields required on the root level             |
 | TaxonomyDataWrapper | JSON fields that contains the user defined content |
 
 ## Getting Started

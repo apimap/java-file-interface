@@ -100,7 +100,7 @@ becomes to great, we will ask you to rebase.
 
 - **A clear and descriptive branch name** that starts with feature/ or bugfix/
 - A clear and **"to the point"** summary of the changes within
-- A **up-to-date** code merge with our development branch
+- An **up-to-date** code merge with our development branch
 
 **Remember**: No change is too small
 

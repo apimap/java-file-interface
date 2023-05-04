@@ -1,8 +1,8 @@
-name: BuildAndPublish
+name: "Build"
 on:
   push:
     branches:
-      - master
+      - 'feature/**'
   workflow_dispatch:
 jobs:
   build:
@@ -17,7 +17,8 @@ jobs:
           java-version: '17'
           distribution: 'zulu'
           cache: 'gradle'
-      - name: Build and Publish
-        run: ./gradlew publish -Dorg.ajoberstar.grgit.auth.username='$GITHUB_ACTOR' -Dorg.ajoberstar.grgit.auth.password='${{ secrets.GITHUB_TOKEN }}'
+      - name: Build
+        run: ./gradlew build -Prelease.version=0.0.0
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MULTI_PACKAGES_TOKEN: ${{ secrets.MULTI_PACKAGES_TOKEN }}
+          MULTI_PACKAGES_USER: ${{ secrets.MULTI_PACKAGES_USER }}
